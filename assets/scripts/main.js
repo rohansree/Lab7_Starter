@@ -111,9 +111,11 @@ function createRecipeCards() {
   router.addPage(page, function() {
     document.querySelector('.section--recipe-cards').classList.remove('shown');
     document.querySelector('.section--recipe-expand').classList.add('shown');
+    
     document.querySelector('recipe-expand').data = recipeData[recipes[0]];
   });
   bindRecipeCard(recipeCard, page);
+  
 
   document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard);
  
@@ -136,11 +138,13 @@ function createRecipeCards() {
     loopRecipeCard.data = recipeData[recipes[i]];
 
     const loopPage = recipeData[recipes[i]]['page-name'];
+    bindRecipeCard(loopRecipeCard, loopPage);
+    
 
     router.addPage(loopPage, function() {
 
-      document.querySelector('.section--recipe-cards').classList.add('shown');
-      document.querySelector('.section--recipe-expand').classList.remove('shown');
+      document.querySelector('.section--recipe-cards').classList.remove('shown');
+      document.querySelector('.section--recipe-expand').classList.add('shown');
       document.querySelector('recipe-expand').data = recipeData[recipes[i]];
       
     });
@@ -149,14 +153,12 @@ function createRecipeCards() {
     {
       loopRecipeCard.classList.add('hidden');
     }
+
     
-    bindRecipeCard(loopRecipeCard, loopPage);
 
     document.querySelector('.recipe-cards--wrapper').appendChild(loopRecipeCard);
-
   }
   
-
 }
 
 /**
