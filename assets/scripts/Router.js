@@ -80,16 +80,14 @@ export class Router {
       hash = '#' + page;
     }
 
-    //console.log(window.location.href+hash);
-    //console.log(!statePopped);
+    
 
-    if(statePopped == false && window.location.hash != hash)
+    if(!statePopped && window.location != hash)
     {
-      //console.log(window.location.href+hash);
-      history.pushState(0,"",window.location.href+hash);
+      history.pushState(0,"",window.location.origin+hash);
     }
 
-    //console.log(this[page]);
+    this[page]();
     
 
   }

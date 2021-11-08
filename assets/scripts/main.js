@@ -111,12 +111,16 @@ function createRecipeCards() {
   router.addPage(page, function() {
     document.querySelector('.section--recipe-cards').classList.remove('shown');
     document.querySelector('.section--recipe-expand').classList.add('shown');
-    
     document.querySelector('recipe-expand').data = recipeData[recipes[0]];
+
+    
   });
   bindRecipeCard(recipeCard, page);
-  
 
+ /* document.querySelector('recipe-expand').data = recipeData[recipes[0]];
+  console.log(document.querySelector('recipe-expand').data);
+  console.log(recipeData[recipes[0]]);
+*/
   document.querySelector('.recipe-cards--wrapper').appendChild(recipeCard);
  
 
@@ -214,6 +218,15 @@ function bindEscKey() {
    * if the escape key is pressed, use your router to navigate() to the 'home'
    * page. This will let us go back to the home page from the detailed page.
    */
+  document.addEventListener('keydown', e =>{
+    if(e.key == "Escape")
+    {
+      router.navigate("home",false);
+    }
+  });
+  
+
+
 }
 
 /**
