@@ -51,6 +51,7 @@ export class Router {
    */
   navigate(page, statePopped) {
     console.log(`navigate() function called, requested page: ${page}`);
+    //console.log(statePopped);
     /**
      * TODO - Part 1 - Step 4
      * Now, we are going to call the functions that we stored earlier based on 
@@ -80,11 +81,9 @@ export class Router {
       hash = '#' + page;
     }
 
-    
-
     if(!statePopped && window.location != hash)
     {
-      history.pushState(0,"",window.location.origin+hash);
+      history.pushState(page,"",window.location.origin+hash);
     }
 
     this[page]();
